@@ -2,7 +2,7 @@ import React from 'react'
 
 const Hero = () => {
   return (
-    <div className="px-4 sm:flex space-y-4 justify-evenly sm:pb-72 sm:h-96 py-44 w-full border border-black">
+    <div className="h-screen sm:flex space-y-4 justify-evenly sm:pb-72 py-44 w-full border border-black bg-green-700">
       
       {/* Mobile Logo */}
       <div className="sm:hidden flex justify-center">

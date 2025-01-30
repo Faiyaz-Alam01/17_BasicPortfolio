@@ -3,11 +3,11 @@ import React from "react";
 export default function About(){
     return(
         <div>
-            <div className="py-16 w-full">
+            <div className="py-16 h-screen  bg-slate-500 w-full">
                 <div className="flex flex-col items-center justify-evenly space-y-8 pt-10 sm:flex-row">
                     {/* image */}
                     <div className="pt-10">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrRFwQMPvkgLqDPX0gtyyVT6iQSFJ7rOfu5A&s" 
+                    <img src={""} 
                     alt="" />
                     </div>
                     
