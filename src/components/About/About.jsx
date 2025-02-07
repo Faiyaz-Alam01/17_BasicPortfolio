@@ -1,49 +1,69 @@
-import React from "react";
+import React from 'react';
+import img from '/Faiyazalam.jpg'
 
-export default function About(){
-    return(
-        <div>
-            <div className="py-16 h-screen  bg-slate-500 w-full">
-                <div className="flex flex-col items-center justify-evenly space-y-8 pt-10 sm:flex-row">
-                    {/* image */}
-                    <div className="pt-10">
-                    <img src={""} 
-                    alt="" />
-                    </div>
-                    
-                    {/* details */}
-                    <div className="text-xl max-w-sm tracking-wider ">
-                        <p>Hi, I'm <span className="text-black font-medium">Faiyaz Alam</span>, a passionate Frontend Developer. i build a lot of website  responsive and intractive website
-                            I've skills <span className="text-black font-medium">HTML, CSS, Tailwind CSS, JavaScript, React.Js , GIT AND GITHUB.</span>
-                        </p>
-                        {/* <div className="flex flex-col mt-4 space-y-2">
-                            
-                                <label htmlFor="HTML">HTML</label>
-                                <input type="range" value={80} id="HTML" className="accent-blue-950"/>
-                          
+const About = () => {
+  // Skill data with percentages
+  const skills = [
+    { name: 'JavaScript', percentage: 80 },
+    { name: 'React', percentage: 85 },
+    { name: 'HTML & CSS', percentage: 90 },
+    { name: 'C++', percentage: 80 },
+    { name: 'Node.js & Express', percentage: 60 },
+    { name: 'Git & Version Control', percentage: 75 },
+  ];
 
-                           
-                                <label htmlFor="CSS">CSS</label>
-                                <input type="range" value={60} id="CSS" className="accent-blue-950"/>
-                           
-                           
-                                <label htmlFor="Js">JavaScript</label>
-                                <input type="range" value={80} id="Js" className="accent-blue-950" />
-                            
+  return (
+    <section id="about" className="py-16 px-8 sm:px-0 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
+          About Me
+        </h2>
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 max-w-6xl mx-auto">
+          {/* Image Section */}
+          <div className="w-full lg:w-1/3 flex justify-center">
+            <img
+              src={img} // Replace with your image URL
+              alt="Your Name"
+              className="w-48 h-72 object-cover shadow-lg"
+            />
+          </div>
 
-                           
-                                <label htmlFor="tcss">Tailwind CSS</label>
-                                <input type="range" value={85} id="tcss" className="accent-blue-950"/>
-                           
+          {/* Content Section */}
+          <div className="w-full lg:w-2/3">
+            <p className="text-lg text-gray-600 mb-6">
+              Hi, I'm <b>Faiyaz Alam</b>, a passionate Front-End developer 
+              with a love for creating innovative and user-friendly solutions.
+            </p>
 
-                            
-                                <label htmlFor="HTML">React.js</label>
-                                <input type="range" value={75} id="HTML" className="accent-blue-950"/>
-                            
-                        </div> */}
-                    </div>
+            {/* Skills Section with Progress Bars */}
+            <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+              Skills
+            </h3>
+            <div className="space-y-4">
+              {skills.map((skill, index) => (
+                <div key={index}>
+                  <div className="flex justify-between mb-1">
+                    <span className="text-md font-medium text-gray-700">
+                      {skill.name}
+                    </span>
+                    <span className="text-md font-medium text-gray-700">
+                      {skill.percentage}%
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2.5">
+                    <div
+                      className="bg-blue-500 h-2.5 rounded-full"
+                      style={{ width: `${skill.percentage}%` }}
+                    ></div>
+                  </div>
                 </div>
+              ))}
             </div>
+          </div>
         </div>
-    )
-}
+      </div>
+    </section>
+  );
+};
+
+export default About;

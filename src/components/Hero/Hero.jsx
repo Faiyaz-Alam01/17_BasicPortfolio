@@ -1,12 +1,13 @@
 import React from 'react'
+import img from '/Faiyazalam.jpg'
 
 const Hero = () => {
   return (
-    <div className="h-screen sm:flex space-y-4 justify-evenly sm:pb-72 py-44 w-full border border-black bg-green-700">
+    <div className="home  sm:h-screen h-auto sm:flex space-y-4 justify-evenly sm:pb-72 py-44 w-full bg-slate-400">
       
       {/* Mobile Logo */}
       <div className="sm:hidden flex justify-center">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrRFwQMPvkgLqDPX0gtyyVT6iQSFJ7rOfu5A&s" 
+      <img src={img} 
           alt="Profile Logo"
           className="w-40 h-40 rounded-full"
         />
@@ -32,7 +33,7 @@ const Hero = () => {
 
       {/* Desktop Logo */}
       <div className="hidden sm:flex justify-center space-y-10">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrRFwQMPvkgLqDPX0gtyyVT6iQSFJ7rOfu5A&s" 
+      <img src={img} 
           alt="Profile Logo"
           className="w-60 h-60 rounded-full border border-black"
         />

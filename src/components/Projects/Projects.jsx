@@ -1,70 +1,95 @@
-import React from 'react'
+import React from 'react';
+import img1 from "/img1.jpg"
 
+const Projects = () => {
+  // Project data
+  const projects = [
+    {
+      id: 1,
+      title: 'Project 1',
+      description: 'A brief description of Project 1. This project demonstrates my skills in [specific technologies].',
+      image: img1, // Replace with your project image URL
+      technologies: ['React', 'Tailwind CSS', 'Node.js'],
+      liveLink: 'https://example.com', // Replace with your project's live link
+      codeLink: 'https://github.com/example', // Replace with your project's code repository
+    },
+    {
+      id: 2,
+      title: 'Weather App',
+      description: 'Weatther app created using Fetch Api .',
+      image: 'https://img.freepik.com/free-photo/silhoutte-birds-flying-young-woman-taking-photo-sunset_335224-914.jpg?semt=ais_hybrid', // Replace with your project image URL
+      technologies: ['JavaScript', 'HTML', 'CSS'],
+      liveLink: 'https://example.com', // Replace with your project's live link
+      codeLink: 'https://github.com/example', // Replace with your project's code repository
+    },
+    {
+      id: 3,
+      title: 'Project 3',
+      description: 'A brief description of Project 3. This project highlights my expertise in [specific area].',
+      image: 'https://img.freepik.com/free-photo/man-with-camera-world-photographer-day_1150-23260.jpg?semt=ais_hybrid', // Replace with your project image URL
+      technologies: ['Python', 'Django', 'PostgreSQL'],
+      liveLink: 'https://example.com', // Replace with your project's live link
+      codeLink: 'https://github.com/example', // Replace with your project's code repository
+    },
+  ];
 
-function Projects() {
   return (
-    <div className='flex justify-center items-center w-full h-auto px-10'>
-      <div className='flex flex-col items-center justify-between sm:flex-row  pt-12  sm:gap-x-4'>
-        {/* card 1 */}
-
-      <div class="container mx-auto py-10 cursor-pointer ">
-        <div class="max-w-72 rounded-lg overflow-hidden shadow-lg bg-slate-100 hover:shadow-md hover:shadow-black">
-          <div className='flex justify-center overflow-hidden'>
-            <img class="w-full hover:scale-105" src="https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg" 
-            alt="Card Image" />
-          </div>
-          <div class="px-6 py-4">
-            <div class="font-bold text-2xl mb-2">Card Title</div>
-            <p class="text-gray-900 text-l">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div class="px-4 pb-4 pt-0 mt-2">
-          <button class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-            Read article
-          </button>
-         </div>
+    <section id="projects" className="py-16 bg-white">
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
+          Projects
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="bg-gray-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            >
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-6">
+                <h3 className="text-2xl font-semibold text-gray-800 mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-gray-600 mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.map((tech, index) => (
+                    <span
+                      key={index}
+                      className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-4">
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 text-center bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300"
+                  >
+                    Live Demo
+                  </a>
+                  <a
+                    href={project.codeLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 text-center bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors duration-300"
+                  >
+                    View Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
+    </section>
+  );
+};
 
-      <div class="container mx-auto py-10 cursor-pointer ">
-        <div class="max-w-72 rounded-lg overflow-hidden shadow-lg bg-slate-100 hover:shadow-md hover:shadow-black">
-          <div className='flex justify-center overflow-hidden'>
-            <img class="w-full hover:scale-105" src="https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg" 
-            alt="Card Image" />
-          </div>
-          <div class="px-6 py-4">
-            <div class="font-bold text-2xl mb-2">Card Title</div>
-            <p class="text-gray-900 text-l">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div class="px-4 pb-4 pt-0 mt-2">
-          <button class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-            Read article
-          </button>
-         </div>
-        </div>
-      </div>
-
-      <div class="container mx-auto py-10 cursor-pointer ">
-        <div class="max-w-72 rounded-lg overflow-hidden shadow-lg bg-slate-100 hover:shadow-md hover:shadow-black">
-          <div className='flex justify-center overflow-hidden'>
-            <img class="w-full hover:scale-105" src="https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg" 
-            alt="Card Image" />
-          </div>
-          <div class="px-6 py-4">
-            <div class="font-bold text-2xl mb-2">Card Title</div>
-            <p class="text-gray-900 text-l">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div class="px-4 pb-4 pt-0 mt-2">
-          <button class="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-            Read article
-          </button>
-         </div>
-        </div>
-      </div>
-
-    </div> 
-    </div>
-  
-  )
-}
-
-export default Projects
+export default Projects;
