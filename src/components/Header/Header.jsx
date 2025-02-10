@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-scroll";
 import MenuIcon from '@mui/icons-material/Menu';
+import useTheme from "../theme/Context";
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 export default function Header() {
   const[isMenuOpen, setMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('home');
-
+  const {themeMode, lightTheme, darkTheme}= useTheme();
   const handleClick = (a) => {
     setActiveLink(a);  // Set active link on click
     setMenuOpen(false);
@@ -15,9 +18,11 @@ export default function Header() {
     setMenuOpen(!isMenuOpen); // Toggle the state
   }
 
+
   return (
     <header>
-      <nav className="w-full h-20 bg-blue-950 flex items-center justify-between px-10 md:px-20 fixed top-0 left-0 z-50">
+      <nav 
+         className={`w-full h-20 flex items-center justify-between px-10 md:px-20 fixed top-0 left-0 z-50 ${themeMode === 'dark' ? "bg-gray-900 text-white" : "bg-gray-900 text-white"}px-8 sm:px-0 bg-gray-50"}`}>
         <div>
           <Link to="">
             <p className="text-2xl font-extrabold text-orange-400">FAIYAZ.</p>
@@ -59,11 +64,19 @@ export default function Header() {
             </Link>
           </li>
         </ul>
-
+        
         {/* Mobile Menu Button */}
         <button onClick={handleHambur} className="md:hidden text-white text-2xl" aria-label="Toggle Menu">
           <MenuIcon fontSize="large" />
         </button>
+
+        <button 
+              onClick={() => themeMode === "light" ? darkTheme()  : lightTheme()}
+              className="ml-4 rounded-full text-center p-1.5 bg-transparent dark:bg-gray-700 text-white dark:text-white mr-4"
+            >
+              {themeMode === "light" ? <LightModeIcon /> : <DarkModeIcon />}
+        </button>
+
 
          {/* Mobile Navigation */}
         {isMenuOpen && (

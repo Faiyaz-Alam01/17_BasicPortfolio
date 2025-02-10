@@ -2,9 +2,11 @@ import React from 'react'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import useTheme from '../theme/Context';
 
 function Contact() {
   const [result, setResult] = React.useState("");
+  const{themeMode} = useTheme(); 
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -27,10 +29,11 @@ function Contact() {
       console.log("Error", data);
       setResult(data.message);
     }
+    
   };
 
   return (
-    <div className='contact p-4 pb-20 h-auto w-full'>
+    <div className={`contact p-4 pb-20 h-auto w-full  const ${ themeMode === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"}`}>
       <div className='p-4'>
         <p className='text-center font-medium text-md pt-4'>Contact Us</p>
         <h3 className='text-center font-bold text-2xl '>Get in Touch</h3>
@@ -56,25 +59,25 @@ function Contact() {
         </div>
 
         <div className='mt-10'>
-          <form onSubmit={onSubmit} className='flex flex-col'>
+          <form onSubmit={onSubmit} className='flex flex-col '>
             <label className='font-medium mb-1'>Your Name</label>
             <input
               type="text"
               placeholder='Enter your name'
-              className='mb-3 border bg-input-bg border-gray-500 outline-none rounded-md px-2 py-2 max-w-80'
+              className='mb-3 dark:text-black border bg-input-bg border-gray-500 outline-none rounded-md px-2 py-2 max-w-80'
               required
             />
             <label className='font-medium mb-1'>Phone Number</label>
             <input
               type="tel"
               placeholder='Enter mobile number'
-              className='mb-3 bg-input-bg border border-gray-500 outline-none rounded-md px-2 py-2 max-w-80'
+              className='mb-3 dark:text-black bg-input-bg border border-gray-500 outline-none rounded-md px-2 py-2 max-w-80'
               required
             />
             <label className='font-medium mb-1'>Write message here</label>
             <textarea
               name="message"
-              className='mb-3 bg-input-bg resize-none rounded-md h-28 border border-black px-2 py-2 sm:w-80 max-w-80'
+              className='mb-3 dark:text-black bg-input-bg resize-none rounded-md h-28 border border-black px-2 py-2 sm:w-80 max-w-80'
               rows="6"
               cols="10"
               placeholder='Enter your message'

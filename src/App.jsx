@@ -5,18 +5,36 @@ import About from './components/About/About'
 import Contact from './components/Contanct/Contact'
 import Header from './components/Header/Header'
 import Projects from './components/Projects/Projects'
-
+import { ThemeProvider } from './components/theme/Context'
+import { useState, useEffect } from 'react'
 
 function App() {
+  const [themeMode, setThemeMode] = useState("light")
+
+  const darkTheme = () =>{
+    setThemeMode("dark")
+  }
+  const lightTheme = () =>{
+    setThemeMode("light")
+  }
+  
+  //theme change 
+  useEffect(() => {
+    document.querySelector('html').classList.remove("light", "dark")
+    document.querySelector('html').classList.add(themeMode)
+  },[themeMode])
+
   return (
-    <div className='dark:bg-gray-800 dark:border-gray-700'>
-      <Header />
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-      <Footer />
-    </div>
+    <ThemeProvider value={{themeMode, darkTheme, lightTheme}}>
+      <div >
+        <Header />
+        <Hero />
+        <About />
+        <Projects />
+        <Contact />
+        <Footer />
+      </div>
+    </ThemeProvider>
   )
 }
 

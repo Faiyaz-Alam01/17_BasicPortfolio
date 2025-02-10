@@ -1,26 +1,29 @@
 import React from 'react';
 import img1 from "/img1.jpg"
+import { motion } from 'motion/react';
+import useTheme from '../theme/Context';
 
 const Projects = () => {
+  const {themeMode} = useTheme(); 
   // Project data
   const projects = [
     {
       id: 1,
-      title: 'Project 1',
+      title: 'Portfolio',
       description: 'A brief description of Project 1. This project demonstrates my skills in [specific technologies].',
       image: img1, // Replace with your project image URL
       technologies: ['React', 'Tailwind CSS', 'Node.js'],
       liveLink: 'https://example.com', // Replace with your project's live link
-      codeLink: 'https://github.com/example', // Replace with your project's code repository
+      codeLink: 'https://github.com/Faiyaz-Alam01/17_BasicPortfolio.git', // Replace with your project's code repository
     },
     {
       id: 2,
       title: 'Weather App',
-      description: 'Weatther app created using Fetch Api .',
+      description: 'Weatther app created  created using Fetch Api Weatther app created using Fetch Api .',
       image: 'https://img.freepik.com/free-photo/silhoutte-birds-flying-young-woman-taking-photo-sunset_335224-914.jpg?semt=ais_hybrid', // Replace with your project image URL
       technologies: ['JavaScript', 'HTML', 'CSS'],
       liveLink: 'https://example.com', // Replace with your project's live link
-      codeLink: 'https://github.com/example', // Replace with your project's code repository
+      codeLink: 'https://github.com/Faiyaz-Alam01/JavaScript-Project.git', // Replace with your project's code repository
     },
     {
       id: 3,
@@ -34,27 +37,31 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-16 bg-white">
+    <section id="projects" className={`py-16 ${themeMode === 'dark' ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
+        <h2 className="text-4xl font-bold text-center   mb-12">
           Projects
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div 
+          
+        className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {projects.map((project) => (
             <div
               key={project.id}
-              className="bg-gray-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className={`rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ${themeMode === 'dark' ? 'bg-gray-800 text-white' : 'bg-gray-100 text-black'}`}
             >
-              <img
+              <motion.img
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 src={project.image}
                 alt={project.title}
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-2xl font-semibold text-gray-800 mb-2">
+                <h3 className="text-2xl font-semibold mb-2">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
+                <p className="dark:text-gray-500 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, index) => (
                     <span

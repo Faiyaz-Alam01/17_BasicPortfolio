@@ -1,7 +1,9 @@
 import React from 'react';
 import img from '/Faiyazalam.jpg'
+import useTheme from '../theme/Context';
 
 const About = () => {
+  const { themeMode } = useTheme();
   // Skill data with percentages
   const skills = [
     { name: 'JavaScript', percentage: 80 },
@@ -13,9 +15,9 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-16 px-8 sm:px-0 bg-gray-50">
+    <section id="about" className={` ${themeMode === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"} py-16 px-8 sm:px-0 bg-gray-50"`}>
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
+        <h2 className="text-4xl font-bold text-center  mb-8">
           About Me
         </h2>
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 max-w-6xl mx-auto">
@@ -30,20 +32,20 @@ const About = () => {
 
           {/* Content Section */}
           <div className="w-full lg:w-2/3">
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="text-lg  mb-6">
               Hi, I'm <b>Faiyaz Alam</b>, a passionate Front-End developer 
               with a love for creating innovative and user-friendly solutions.
             </p>
 
             {/* Skills Section with Progress Bars */}
-            <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+            <h3 className="text-2xl font-semibold mb-6">
               Skills
             </h3>
             <div className="space-y-4">
               {skills.map((skill, index) => (
                 <div key={index}>
                   <div className="flex justify-between mb-1">
-                    <span className="text-md font-medium text-gray-700">
+                    <span className="text-md font-medium ">
                       {skill.name}
                     </span>
                     <span className="text-md font-medium text-gray-700">
